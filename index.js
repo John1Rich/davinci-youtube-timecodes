@@ -1,8 +1,27 @@
+import console, { error } from "console";
 import fs from "fs"; // импорт модуля File System для работы с файлами
 
 try {
-  // ✅ 1. Читаем файл Timeline 1.edl в кодировке utf-8
-  const edlData = fs.readFileSync("./Timeline 1.edl", "utf-8");
+  // ✅ 1. Читаем текущую папку
+  const files = fs.readdirSync("."); // возвращает массив с именами всех её файлов
+
+  console.log(files);
+
+  // Ищем первый попавшийся файл, который заканчивается на .edl
+  const edlFile = files.find((file) => file.endsWith(".edl"));
+  console.log(edlFile);
+
+  // Проверяем, нашли ли мы вообще такой файл
+  if (!edlFile) {
+    // если edl файлов нет, выбрасываем ошибку
+    throw new error(
+      "EDL-файл в папке не найден! Сначала экспортируйте его из Davinci.",
+    );
+  }
+
+  // Подставляем найденный файл в путь
+  const filePath = `./${edlFile}`;
+  const edlData = fs.readFileSync(filePath, "utf-8"); // читаем данные из файла
   console.log("✅ Файл успешно прочитан!");
 
   // ✅ 2. Поиск названий маркеров
