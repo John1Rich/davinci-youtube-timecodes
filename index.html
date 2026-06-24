@@ -8,9 +8,19 @@
   <!-- Выполнится скрипт только после полной загрузки html -->
   <script src="./app.js" defer></script>
   <body>
+    <!-- Форма для drag and drop -->
+    <div id="drag-and-drop"><p>Перетащите edl файл</p></div>
     <!-- Кнопка выбора файла -->
-    <input id="output" type="file" accept=".edl" required title="Выберите файл" />
+    <input
+      id="output"
+      type="file"
+      accept=".edl"
+      required
+      title="Выберите файл"
+    />
     <!-- Отображение готовых таймкодов -->
-    <textarea name="" id=""></textarea>
+    <textarea id="" name=""></textarea>
+    <!-- Кнопка Скопировать -->
+    <button id="copyBtn" title="Скопировать">Скопировать</button>
   </body>
 </html>
