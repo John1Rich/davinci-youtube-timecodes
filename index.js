@@ -1,3 +1,4 @@
+// Скрипт среды Node.js
 import console, { error } from "console";
 import fs from "fs"; // импорт модуля File System для работы с файлами
 
@@ -34,7 +35,7 @@ try {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]; // линия с маркером-главой определена для каждой строки
 
-    // Получаем названия загаловков
+    // Получаем названия заголовков
     if (line.includes("|M:")) {
       chapter = line.split("|M:"); // получаем массив двух частей, нам нужен chapter[1]
       chapter = chapter[1].split("|D:1"); // снова массив двух частей, нам нужен chapter[0]
@@ -61,6 +62,8 @@ try {
       youtubeChapters.push(ytTime + " " + chapter); // добавляем готовые таймкоды и заголовоки в массив
     }
   }
+
+  // ✅ 4. Собираем результат
   const finalResult = youtubeChapters.join("\n"); // собираем элементы массива в единый текст
   console.log(finalResult);
   fs.writeFileSync("./youtube_chapters.txt", finalResult); // запись результата в .txt
